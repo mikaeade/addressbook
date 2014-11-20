@@ -8,10 +8,12 @@ package helloworld;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -31,49 +33,20 @@ public class HelloWorld extends Application {
   
         // Root is the main layout
         // Root = VBOX elementit on allekain
-        VBox root = new VBox();
-        // Label can insert text and pictures etc...
-        Label nameLabel  = new Label("Nimi");
-        TextField nameField = new TextField();
-       
-        Label addressLabel  = new Label("Osoite");
-        TextField addressField = new TextField();
         
-        Label phoneLabel  = new Label("Puhelin");
-        TextField phoneField = new TextField();
-       
-        nameLabel.setStyle("-fx-background-color:pink");
-        addressLabel.setStyle("-fx-background-color:lightgreen");
-        phoneLabel.setStyle("-fx-background-color:lightblue");
-        /// layot for textfield components
-        
-        VBox textFieldLayout = new VBox();
-        textFieldLayout.setStyle("-fx-spacing:10 10 10 10; -fx-padding:10;-fx-background-color:lightgrey");
-        //--------- getChildren palauttaa mitä on jo laitettu ja addillä lisätään
-        textFieldLayout.getChildren().add(nameLabel);
-        textFieldLayout.getChildren().add(nameField);
-        textFieldLayout.getChildren().add(addressLabel);
-        textFieldLayout.getChildren().add(addressField);
-        textFieldLayout.getChildren().add(phoneLabel);
-        textFieldLayout.getChildren().add(phoneField);
-        
-        // -------luodaan napit 
-        
-        HBox buttonLayout = new HBox();
-        buttonLayout.setStyle("-fx-spacing:10; -fx-padding:10;-fx-background-color:grey");
-        
-        Button closeButton = new Button("Sulje");       
-        Button saveButton = new Button("Tallenna");
-
-        buttonLayout.getChildren().add(closeButton);
-        buttonLayout.getChildren().add(saveButton);
-        
+        BorderPane root = new BorderPane();
+     
         //-------- laitetaan textFieldLayout ja buttonLayout roottiin
-        root.getChildren().add(textFieldLayout);
-        root.getChildren().add(buttonLayout);
+        TextFieldPartial txt =  new TextFieldPartial();
+        root.setCenter(new TextFieldPartial());
+        root.setBottom(new ButtonLayoutPartial());
+        root.setRight(new TextAreaPartial());
         
-        Scene scene = new Scene(root, 400, 450);
-
+       // root.getChildren().add(new TextFieldPartial());
+       // root.getChildren().add(new ButtonLayoutPartial());
+        
+ 
+        Scene scene = new Scene(root, 400, 400);
         // näihin ei tarvi koskea!
         primaryStage.setTitle("Idea");
         primaryStage.setScene(scene);
