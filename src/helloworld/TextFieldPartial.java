@@ -29,8 +29,8 @@ public class TextFieldPartial extends VBox {
     public TextFieldPartial() {
         //--------- getChildren palauttaa mitä on jo laitettu ja addillä lisätään
         //roottin nähdäen 10 pikseliä
-        
         VBox.setMargin(this, new Insets(10,10,10,10));
+        this.setMinWidth(100);
         this.getChildren().add(nameLabel);
         this.getChildren().add(nameField);
         this.getChildren().add(addressLabel);

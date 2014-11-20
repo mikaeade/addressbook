@@ -35,18 +35,14 @@ public class HelloWorld extends Application {
         // Root = VBOX elementit on allekain
         
         BorderPane root = new BorderPane();
-     
+        root.setPrefSize(500,400);
         //-------- laitetaan textFieldLayout ja buttonLayout roottiin
-        TextFieldPartial txt =  new TextFieldPartial();
+        //TextFieldPartial txt =  new TextFieldPartial();
         root.setCenter(new TextFieldPartial());
         root.setBottom(new ButtonLayoutPartial());
         root.setRight(new TextAreaPartial());
-        
-       // root.getChildren().add(new TextFieldPartial());
-       // root.getChildren().add(new ButtonLayoutPartial());
-        
- 
-        Scene scene = new Scene(root, 400, 400);
+     
+        Scene scene = new Scene(root);
         // näihin ei tarvi koskea!
         primaryStage.setTitle("Idea");
         primaryStage.setScene(scene);

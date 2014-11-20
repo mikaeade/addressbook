@@ -22,6 +22,7 @@ public class TextAreaPartial extends VBox {
         //--------- getChildren palauttaa mitä on jo laitettu ja addillä lisätään
         //roottin nähdäen 10 pikseliä
         VBox.setMargin(this, new Insets(10,10,10,10));
+        
         this.autosize();
         this.getChildren().add(textArea);
         this.setStyle("-fx-spacing:10 10 10 10; -fx-padding:10;-fx-background-color:lightgrey;-fx-height:100");
