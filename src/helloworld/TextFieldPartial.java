@@ -58,6 +58,6 @@ public class TextFieldPartial extends VBox {
         
         nameField.clear();
         addressField.clear();
-        phoneField.clear();
+        phoneField.clear(); 
     }
 }

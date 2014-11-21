@@ -11,15 +11,15 @@ package helloworld;
  */
 public class People {
     
-    private static String nimi;
-    private static String osoite;
-    private static String puhelin;
+    private String nimi;
+    private String osoite;
+    private String puhelin;
 
-    public  String getNimi() {
+    public String getNimi() {
         return nimi;
     }
 
-    public  void setNimi(String nimi) {
+    public void setNimi(String nimi) {
         this.nimi = nimi;
     }
 

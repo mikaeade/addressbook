@@ -21,7 +21,7 @@ import javafx.scene.layout.HBox;
  */
 public class ButtonLayoutPartial extends HBox implements EventHandler<ActionEvent> {
 
-    private static ArrayList<People> lista = new ArrayList<People>();
+    private ArrayList<People> lista = new ArrayList();
     private final Button closeButton = new Button("Sulje");
     private final Button saveButton = new Button("Tallenna");
     private final Button printButton = new Button("Printtaa");
@@ -50,9 +50,16 @@ public class ButtonLayoutPartial extends HBox implements EventHandler<ActionEven
             Platform.exit();
         } else if (t.getSource().equals(saveButton)) {
             People temp1  = textField.getTextFieldData();
+            System.out.println(temp1.getNimi());
             lista.add(temp1);
+            System.out.println("listan koko: " + lista.size());
+            System.out.println("listan eka: " +lista.get(0).getNimi());
+            if(lista.size() > 1)
+               System.out.println("listan eka: " +lista.get(1).getNimi()); 
             textField.clearTextFields();
-        } else {
+        } 
+        
+        else {
             for (People temp : lista) {
                 textArea.setText(textArea.getText()
                         + "Nimi:" + temp.getNimi() + "\n"
