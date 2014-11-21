@@ -6,17 +6,9 @@
 package helloworld;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -30,17 +22,15 @@ public class HelloWorld extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-  
-        // Root is the main layout
-        // Root = VBOX elementit on allekain
-        
+
         BorderPane root = new BorderPane();
-        root.setPrefSize(500,400);
-        //-------- laitetaan textFieldLayout ja buttonLayout roottiin
-        //TextFieldPartial txt =  new TextFieldPartial();
-        root.setCenter(new TextFieldPartial());
-        root.setBottom(new ButtonLayoutPartial());
-        root.setRight(new TextAreaPartial());
+        
+        TextArea textArea = new TextArea();
+        TextFieldPartial textField = new TextFieldPartial();
+        
+        root.setCenter(textField);
+        root.setBottom(new ButtonLayoutPartial(textArea, textField));
+        root.setRight(textArea);
      
         Scene scene = new Scene(root);
         // näihin ei tarvi koskea!

@@ -12,24 +12,23 @@ import javafx.scene.layout.VBox;
 
 /**
  *
- * @author Ohjelmistokehitys
+ * @author Mikaeade
  */
-public class TextFieldPartial extends VBox {
 
+public class TextFieldPartial extends VBox {  
+    
     // Label can insert text and pictures etc...
-    private final Label nameLabel = new Label("Nimi");
-    private final TextField nameField = new TextField();
-
-    private final Label addressLabel = new Label("Osoite");
+    private final Label nameLabel        = new Label("Nimi");
+    private final TextField nameField    = new TextField();
+    private final Label addressLabel     = new Label("Osoite");
     private final TextField addressField = new TextField();
-
-    private final Label phoneLabel = new Label("Puhelin");
-    private final TextField phoneField = new TextField();
+    private final Label phoneLabel       = new Label("Puhelin");
+    private final TextField phoneField   = new TextField();
 
     public TextFieldPartial() {
         //--------- getChildren palauttaa mitä on jo laitettu ja addillä lisätään
         //roottin nähdäen 10 pikseliä
-        VBox.setMargin(this, new Insets(10,10,10,10));
+        VBox.setMargin(this, new Insets(10, 10, 10, 10));
         this.setMinWidth(100);
         this.getChildren().add(nameLabel);
         this.getChildren().add(nameField);
@@ -37,17 +36,28 @@ public class TextFieldPartial extends VBox {
         this.getChildren().add(addressField);
         this.getChildren().add(phoneLabel);
         this.getChildren().add(phoneField);
-       
+
         nameLabel.setStyle("-fx-background-color:pink");
         addressLabel.setStyle("-fx-background-color:lightgreen");
         phoneLabel.setStyle("-fx-background-color:lightblue");
         /// layot for textfield components
         this.setStyle("-fx-spacing:10 10 10 10; -fx-padding:10;-fx-background-color:lightgrey");
     }
-    
-    public String getTextFieldName(){
-    
-      return this.addressField.getText();
-    
-    }   
+
+    public People getTextFieldData() {
+        People people = new People();
+        people.setNimi(nameField.getText());
+        System.out.println(nameField.getText());
+        people.setOsoite(addressField.getText());
+        people.setPuhelin(phoneField.getText());
+        
+        System.out.println("eade: " + people.getNimi());
+        return people;
+    }
+    public void clearTextFields(){
+        
+        nameField.clear();
+        addressField.clear();
+        phoneField.clear();
+    }
 }

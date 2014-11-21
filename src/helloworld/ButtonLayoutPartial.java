@@ -5,11 +5,14 @@
  */
 package helloworld;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 
 /**
@@ -18,15 +21,17 @@ import javafx.scene.layout.HBox;
  */
 public class ButtonLayoutPartial extends HBox implements EventHandler<ActionEvent> {
 
+    private static ArrayList<People> lista = new ArrayList<People>();
     private final Button closeButton = new Button("Sulje");
     private final Button saveButton = new Button("Tallenna");
     private final Button printButton = new Button("Printtaa");
+    private TextArea textArea;
+    private TextFieldPartial textField;
 
-    UserInfo info = new UserInfo();
-    
-    
-    public ButtonLayoutPartial() {
+    public ButtonLayoutPartial(TextArea textArea, TextFieldPartial textField) {
 
+        this.textArea = textArea;
+        this.textField = textField;
         this.setStyle("-fx-spacing:10; -fx-padding:10;-fx-background-color:grey");
         HBox.setMargin(closeButton, new Insets(10, 10, 10, 10));
         HBox.setMargin(saveButton, new Insets(10, 10, 10, 10));
@@ -37,28 +42,24 @@ public class ButtonLayoutPartial extends HBox implements EventHandler<ActionEven
         closeButton.setOnAction(this);
         saveButton.setOnAction(this);
         printButton.setOnAction(this);
-        /* *inline method
-         closeButton.setOnAction(new EventHandler<ActionEvent>() {
-
-         @Override
-         public void handle(ActionEvent t) {
-         }
-
-         });
-         }*/
     }
 
     @Override
     public void handle(ActionEvent t) {
         if (t.getSource().equals(closeButton)) {
             Platform.exit();
+        } else if (t.getSource().equals(saveButton)) {
+            People temp1  = textField.getTextFieldData();
+            lista.add(temp1);
+            textField.clearTextFields();
+        } else {
+            for (People temp : lista) {
+                textArea.setText(textArea.getText()
+                        + "Nimi:" + temp.getNimi() + "\n"
+                        + "Osoite:" + temp.getOsoite() + "\n"
+                        + "Puhelin:" + temp.getPuhelin() + "\n\n");
+            }
         }
-        else if (t.getSource().equals(saveButton)){
-            System.out.println("Tallennus");   
-        }
-        else{
-            System.out.println("Printtaa");
-        }
-            
     }
 }
+
